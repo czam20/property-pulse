@@ -2,9 +2,10 @@ import Hero from "@/components/Hero";
 import InfoBox from "@/components/InfoBox";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
-import properties from "@/properties.json";
+import { getProperties } from "@/utils/requests";
 
-export default function Home() {
+export default async function Home() {
+  const properties = await getProperties();
   return (
     <>
       <Hero />
@@ -47,9 +48,9 @@ export default function Home() {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <PropertyCard {...properties[0]}/>
-            <PropertyCard {...properties[1]}/>
-            <PropertyCard {...properties[2]}/>
+            <PropertyCard {...properties[0]} />
+            <PropertyCard {...properties[1]} />
+            <PropertyCard {...properties[2]} />
           </div>
         </div>
       </section>

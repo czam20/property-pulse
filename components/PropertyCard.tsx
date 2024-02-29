@@ -3,28 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { FaBath, FaBed, FaMoneyBill, FaRulerCombined } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-
-type PropertyCardProps = {
-  _id: string;
-  name: string;
-  type: string;
-  description: string;
-  location: {
-    street: string;
-    city: string;
-    state: string;
-    zipcode: string;
-  };
-  beds?: number;
-  baths?: number;
-  square_feet?: number;
-  rates: {
-    nightly?: number;
-    weekly?: number;
-    monthly?: number;
-  };
-  images: Array<string>
-};
+import { PropertyCardProps } from "@/types";
+import InfoDetail from "./InfoDetail";
 
 export default function PropertyCard(props: PropertyCardProps) {
   const getRateDisplay = () => {
@@ -38,7 +18,7 @@ export default function PropertyCard(props: PropertyCardProps) {
       return `$${rates.nightly}/night`;
     }
 
-    return ""
+    return "";
   };
 
   return (
@@ -61,40 +41,37 @@ export default function PropertyCard(props: PropertyCardProps) {
         </h3>
 
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
-          {props.beds ? (
-            <PropertyDetail
-              icon={<FaBed />}
-              name="Beds"
-              quantity={props.beds}
-            />
-          ) : null}
+          <InfoDetail
+            icon={<FaBed />}
+            name="Beds"
+            quantity={props.beds}
+            className="hidden lg:inline"
+          />
 
-          {props.baths ? (
-            <PropertyDetail
-              icon={<FaBath />}
-              name="Baths"
-              quantity={props.baths}
-            />
-          ) : null}
+          <InfoDetail
+            icon={<FaBath />}
+            name="Baths"
+            quantity={props.baths}
+            className="hidden lg:inline"
+          />
 
-          {props.square_feet ? (
-            <PropertyDetail
-              icon={<FaRulerCombined />}
-              name="sqft"
-              quantity={props.square_feet}
-            />
-          ) : null}
+          <InfoDetail
+            icon={<FaRulerCombined />}
+            name="sqft"
+            quantity={props.square_feet}
+            className="hidden lg:inline"
+          />
         </div>
 
         <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
           {props.rates?.nightly ? (
-            <PropertyDetail icon={<FaMoneyBill />} name="Nightly" />
+            <InfoDetail icon={<FaMoneyBill />} name="Nightly" />
           ) : null}
           {props.rates?.weekly ? (
-            <PropertyDetail icon={<FaMoneyBill />} name="Weekly" />
+            <InfoDetail icon={<FaMoneyBill />} name="Weekly" />
           ) : null}
           {props.rates?.monthly ? (
-            <PropertyDetail icon={<FaMoneyBill />} name="Monthly" />
+            <InfoDetail icon={<FaMoneyBill />} name="Monthly" />
           ) : null}
         </div>
 
@@ -102,7 +79,7 @@ export default function PropertyCard(props: PropertyCardProps) {
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="mb-4 lg:mb-0 text-orange-700">
-            <PropertyDetail
+            <InfoDetail
               icon={<FaLocationDot />}
               name={`${props.location.city} ${props.location.state}`}
             />
@@ -114,24 +91,6 @@ export default function PropertyCard(props: PropertyCardProps) {
             Details
           </Link>
         </div>
-      </div>
-    </div>
-  );
-}
-
-type PropertyDetailProps = {
-  icon: React.ReactNode;
-  name: string;
-  quantity?: number;
-};
-
-function PropertyDetail(props: PropertyDetailProps) {
-  return (
-    <div className="flex items-center gap-2">
-      {props.icon}
-      <div>
-        <span>{props?.quantity}</span>
-        <span className="md:hidden lg:inline"> {props.name}</span>
       </div>
     </div>
   );
