@@ -6,6 +6,8 @@ import { getProperties } from "@/utils/requests";
 
 export default async function Home() {
   const properties = await getProperties();
+  const homeProperties = properties?.slice(0, 3);
+
   return (
     <>
       <Hero />
@@ -48,9 +50,10 @@ export default async function Home() {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <PropertyCard {...properties[0]} />
-            <PropertyCard {...properties[1]} />
-            <PropertyCard {...properties[2]} />
+            {homeProperties &&
+              homeProperties.map((property: any) => (
+                <PropertyCard {...property} />
+              ))}
           </div>
         </div>
       </section>

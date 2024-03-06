@@ -2,9 +2,9 @@ import { FaXmark } from "react-icons/fa6";
 
 type PropertyRatesProps = {
   rates: {
-    nightly?: number;
-    weekly?: number;
-    monthly?: number;
+    nightly?: number | string;
+    weekly?: number | string;
+    monthly?: number | string;
   };
 };
 
@@ -25,7 +25,7 @@ export default function PropertyRates(props: PropertyRatesProps) {
 
 type RateDetailProps = {
   title: string;
-  rate: number | undefined;
+  rate?: number | string;
 };
 
 function RateDetail(props: RateDetailProps) {

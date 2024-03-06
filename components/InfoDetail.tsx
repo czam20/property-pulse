@@ -1,7 +1,7 @@
 type InfoDetailProps = {
   icon: React.ReactNode;
   name: string;
-  quantity?: number;
+  quantity?: number | string;
   className?: string;
 };
 

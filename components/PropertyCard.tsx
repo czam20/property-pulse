@@ -21,10 +21,12 @@ export default function PropertyCard(props: PropertyCardProps) {
     return "";
   };
 
+  const cardImage = props?.images?.length > 0 ? props.images[0] : "";
+
   return (
     <div className="rounded-xl shadow-md relative">
       <Image
-        src={`/images/properties/${props.images[0]}`}
+        src={cardImage}
         alt=""
         width={0}
         height={0}
@@ -81,7 +83,7 @@ export default function PropertyCard(props: PropertyCardProps) {
           <div className="mb-4 lg:mb-0 text-orange-700">
             <InfoDetail
               icon={<FaLocationDot />}
-              name={`${props.location.city} ${props.location.state}`}
+              name={`${props.location?.city} ${props.location?.state}`}
             />
           </div>
           <Link

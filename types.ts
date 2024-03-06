@@ -1,27 +1,5 @@
-export type PropertyCardProps = {
-  _id: string;
-  name: string;
-  type: string;
-  description: string;
-  location: {
-    street: string;
-    city: string;
-    state: string;
-    zipcode: string;
-  };
-  beds?: number;
-  baths?: number;
-  square_feet?: number;
-  rates: {
-    nightly?: number;
-    weekly?: number;
-    monthly?: number;
-  };
-  images: Array<string>;
-};
-
-export type PropertyProps = {
-  _id: string;
+export type PropertyType = {
+  owner: string;
   name: string;
   type: string;
   description?: string;
@@ -31,20 +9,29 @@ export type PropertyProps = {
     state?: string;
     zipcode?: string;
   };
-  beds: number;
-  baths: number;
-  square_feet: number;
-  amenities: Array<string>,
+  beds: number | string;
+  baths: number | string;
+  square_feet: number | string;
+  amenities: Array<string>;
   rates: {
-    nightly?: number;
-    weekly?: number;
-    monthly?: number;
+    nightly?: number | string;
+    weekly?: number | string;
+    monthly?: number | string;
   };
   seller_info: {
-    name: string,
-    email: string,
-    phone: string
-  },
+    name: string;
+    email: string;
+    phone: string;
+  };
   images: Array<string>;
+};
+
+export type PropertyProps = PropertyType & {
+  _id: string;
   isFeatured: boolean;
 };
+
+export type PropertyCardProps = Omit<
+  PropertyProps,
+  "isFeatured" | "seller_info" | "amenities"
+>;

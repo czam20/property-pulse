@@ -16,7 +16,7 @@ export default function PropertyHeader(props: PropertyHeaderProps) {
       <div className="container-xl m-auto">
         <div className="grid grid-cols-1">
           <Image
-            src={`/images/properties/${props.image}`}
+            src={props.image}
             alt=""
             className="object-cover h-[500px] w-full"
             width={0}
