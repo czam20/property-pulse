@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, FormEvent } from "react";
-
+// TODO: initial values
 type FieldsType = {
   name: string;
   type: string;

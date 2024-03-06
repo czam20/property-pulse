@@ -23,7 +23,7 @@ export type PropertyType = {
     email: string;
     phone: string;
   };
-  images: Array<string>;
+  images?: Array<string>;
 };
 
 export type PropertyProps = PropertyType & {
