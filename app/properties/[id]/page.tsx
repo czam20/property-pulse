@@ -14,6 +14,7 @@ import PropertyRates from "./components/PropertyRates";
 import PropertyDescription from "./components/PropertyDescription";
 import PropertyAmenities from "./components/PropertyAmenities";
 import CustomButton from "@/components/CustomButton";
+import Gallery from "@/components/Gallery";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -56,9 +57,9 @@ export default function PropertyDetail() {
                   <PropertyAmenities amenities={property.amenities} />
                 ) : null}
 
-                <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+                {/* <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                   <div id="map"></div>
-                </div>
+                </div> */}
               </main>
 
               <aside className="space-y-4 lg:col-span-1">
@@ -69,6 +70,8 @@ export default function PropertyDetail() {
             </div>
           </div>
         </section>
+
+        <Gallery images={property.images} />
       </>
     );
 }
