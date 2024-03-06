@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/global.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
@@ -25,6 +27,7 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-[calc(100vh-144px)]">{children}</main>
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>

@@ -3,6 +3,7 @@ import ListingCard from "./ListingCard";
 
 type ListingsProps = {
   properties: Array<PropertyProps>;
+  handleDeleteProperty: (id: string) => {};
 };
 
 export default function Listings(props: ListingsProps) {
@@ -16,7 +17,11 @@ export default function Listings(props: ListingsProps) {
         <>
           <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
           {props.properties.map((property) => (
-            <ListingCard key={property._id} {...property} />
+            <ListingCard
+              key={property._id}
+              property={property}
+              handleDeleteProperty={props.handleDeleteProperty}
+            />
           ))}
         </>
       )}
