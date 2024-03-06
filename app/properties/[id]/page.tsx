@@ -8,7 +8,7 @@ import {
   FaBookmark,
   FaShare,
 } from "react-icons/fa";
-import { PropertyProps } from "@/types";
+import { PropertyProps } from "@/types/properties-types";
 import PropertyHeader from "./components/PropertyHeader";
 import PropertyRates from "./components/PropertyRates";
 import PropertyDescription from "./components/PropertyDescription";

@@ -1,5 +1,5 @@
 import InfoDetail from "@/components/InfoDetail";
-import { PropertyProps } from "@/types";
+import { PropertyProps } from "@/types/properties-types";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";

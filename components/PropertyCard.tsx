@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { FaBath, FaBed, FaMoneyBill, FaRulerCombined } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { PropertyCardProps } from "@/types";
+import { PropertyCardProps } from "@/types/properties-types";
 import InfoDetail from "./InfoDetail";
 
 export default function PropertyCard(props: PropertyCardProps) {

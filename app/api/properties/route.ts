@@ -3,7 +3,7 @@ import connectDB from "@/config/db";
 import cloudinary from "@/config/cloudinary";
 import { getSessionUser } from "@/utils/getSessionUser";
 import Property from "@/models/Property";
-import { PropertyType } from "@/types";
+import { PropertyType } from "@/types/properties-types";
 
 // GET api/properties
 export const GET = async (request: NextRequest) => {

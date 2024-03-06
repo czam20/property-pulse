@@ -1,5 +1,5 @@
 import InfoDetail from "@/components/InfoDetail";
-import { PropertyProps } from "@/types";
+import { PropertyProps } from "@/types/properties-types";
 import { FaBath, FaBed, FaRulerCombined } from "react-icons/fa";
 
 type PropertyDescriptionProps = {
