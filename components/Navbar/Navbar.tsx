@@ -56,7 +56,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link className="flex flex-shrink-0 items-center" href="/">
               <div className="h-10 w-auto relative">
-                <Image fill src="/images/logo-white.png" alt="PropertyPulse" />
+                <Image fill src="/images/logo-white.png" alt="PropertyPulse" sizes="150px"/>
               </div>
 
               <span className="hidden md:block text-white text-2xl font-bold ml-2">

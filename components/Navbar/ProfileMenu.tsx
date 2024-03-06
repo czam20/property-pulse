@@ -24,6 +24,7 @@ export default function ProfileMenu(props: { profileImage?: string | null }) {
                 fill
                 src={props.profileImage || "/images/profile.png"}
                 alt=""
+                sizes="32px"
               />
             </div>
           </button>
