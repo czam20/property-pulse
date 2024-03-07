@@ -6,6 +6,34 @@ import User from "@/models/User";
 
 export const dynamic = "force-dynamic";
 
+export const GET = async (request: NextRequest) => {
+  try {
+    connectDB();
+    const session = await getSessionUser();
+
+    if (!session || !session.userId) {
+      return new Response("User ID is required", { status: 401 });
+    }
+
+    //find user in db
+    const user = await User.findOne({ _id: session.userId });
+
+    //get user bookmarks
+    const bookmarks = await Property.find({
+      _id: {
+        $in: user.bookmarks,
+      },
+    });
+
+    return new Response(JSON.stringify({ bookmarks }), {
+      status: 200,
+    });
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};
+
 export const POST = async (request: NextRequest) => {
   try {
     connectDB();
