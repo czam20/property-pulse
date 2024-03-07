@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { getProperty } from "@/utils/requests";
 import Loading from "@/components/Loading";
 import ContactForm from "@/components/ContactForm";
-import { FaBookmark, FaShare } from "react-icons/fa";
+import { FaShare } from "react-icons/fa";
 import { PropertyProps } from "@/types/properties-types";
 import PropertyHeader from "./components/PropertyHeader";
 import PropertyRates from "./components/PropertyRates";
@@ -13,6 +13,7 @@ import PropertyAmenities from "./components/PropertyAmenities";
 import CustomButton from "@/components/CustomButton";
 import Gallery from "@/components/Gallery";
 import PropertyMap from "@/components/PropertyMap";
+import BookmarkButton from "./components/BookmarkButton";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -68,10 +69,7 @@ export default function PropertyDetail() {
               </main>
 
               <aside className="space-y-4 lg:col-span-1">
-                <CustomButton
-                  text="Bookmark Property"
-                  icon={<FaBookmark className="mr-2" />}
-                />
+                <BookmarkButton propertyId={property._id}/>
                 <CustomButton
                   text="Share Property"
                   className="bg-orange-500 hover:bg-orange-600"
