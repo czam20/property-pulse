@@ -14,6 +14,7 @@ import CustomButton from "@/components/CustomButton";
 import Gallery from "@/components/Gallery";
 import PropertyMap from "@/components/PropertyMap";
 import BookmarkButton from "./components/BookmarkButton";
+import ShareButtons from "./components/ShareButtons";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -69,12 +70,8 @@ export default function PropertyDetail() {
               </main>
 
               <aside className="space-y-4 lg:col-span-1">
-                <BookmarkButton propertyId={property._id}/>
-                <CustomButton
-                  text="Share Property"
-                  className="bg-orange-500 hover:bg-orange-600"
-                  icon={<FaShare className="mr-2" />}
-                />
+                <BookmarkButton propertyId={property._id} />
+                <ShareButtons property={property} />
                 <ContactForm />
               </aside>
             </div>
