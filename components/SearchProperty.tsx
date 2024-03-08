@@ -2,11 +2,20 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function SearchProperty() {
+type SearchPropertyProps = {
+  initialValues?: {
+    location?: string;
+    type?: string;
+  };
+};
+
+export default function SearchProperty(props: SearchPropertyProps) {
+  const { initialValues } = props;
+
   const router = useRouter();
 
-  const [location, setLocation] = useState("");
-  const [type, setType] = useState("All");
+  const [location, setLocation] = useState(initialValues?.location ?? "");
+  const [type, setType] = useState(initialValues?.type ?? "All");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -41,7 +41,12 @@ export default function PropertiesPage() {
     <>
       <section className="px-4 py-6 bg-blue-700">
         <div className="container-xl lg:container m-auto px-4 py-6">
-          <SearchProperty />
+          <SearchProperty
+            initialValues={{
+              location: location ?? "",
+              type: type ?? "All",
+            }}
+          />
         </div>
       </section>
       <section className="px-4 py-6">
@@ -49,8 +54,11 @@ export default function PropertiesPage() {
           <Loading />
         ) : (
           <div className="container-xl lg:container m-auto px-4 py-6">
-            <Link href="/properties" className="flex gap-2 items-center text-blue-500">
-                <FaArrowLeft /> Back to properties
+            <Link
+              href="/properties"
+              className="flex gap-2 items-center text-blue-500"
+            >
+              <FaArrowLeft /> Back to properties
             </Link>
             <h2 className="text-center text-xl font-bold mb-4">
               Search results
