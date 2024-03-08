@@ -39,7 +39,8 @@ export default function PropertyDetail() {
 
   if (loading) return <Loading />;
 
-  if (!property && !loading) return <div>Property not found</div>;
+  if (!property && !loading)
+    return <p className="text-center text-lg font-bold py-6 px-4">Property not found</p>;
 
   if (property)
     return (

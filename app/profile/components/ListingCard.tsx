@@ -16,10 +16,11 @@ export default function ListingCard(props: ListingCardProps) {
         <div className="relative h-96 w-full">
           <Image
             className="rounded-md object-cover"
-            src={property.images[0]}
+            src={property?.images ? property.images[0] : ""}
             alt="Property 1"
             sizes="100vw"
             fill
+            priority
           />
         </div>
       </Link>

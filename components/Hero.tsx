@@ -1,4 +1,4 @@
-import Search from "./Search";
+import SearchProperty from "./SearchProperty";
 
 export default function Hero() {
   return (
@@ -12,7 +12,7 @@ export default function Hero() {
             Discover the perfect property that suits your needs.
           </p>
         </div>
-        <Search />
+        <SearchProperty />
       </div>
     </section>
   );
