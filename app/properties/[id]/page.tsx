@@ -73,7 +73,7 @@ export default function PropertyDetail() {
               <aside className="space-y-4 lg:col-span-1">
                 <BookmarkButton propertyId={property._id} />
                 <ShareButtons property={property} />
-                <ContactForm />
+                <ContactForm property={property} />
               </aside>
             </div>
           </div>

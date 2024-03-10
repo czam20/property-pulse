@@ -72,8 +72,6 @@ export default function BookmarkButton(props: BookmarkButtonProps) {
 
   return (
     <CustomButton
-      text={isBookmarked ? "Remove Bookmark" : "Bookmark Property"}
-      icon={<FaBookmark className="mr-2" />}
       className={
         isBookmarked
           ? "bg-red-500 hover:bg-red-600"
@@ -81,6 +79,9 @@ export default function BookmarkButton(props: BookmarkButtonProps) {
       }
       onClick={handleClick}
       loading={loading}
-    />
+    >
+      <FaBookmark className="mr-2" />{" "}
+      {isBookmarked ? "Remove Bookmark" : "Bookmark Property"}
+    </CustomButton>
   );
 }
