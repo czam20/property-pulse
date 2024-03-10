@@ -5,6 +5,32 @@ import Message from "@/models/Message";
 
 export const dynamic = "force-dynamic";
 
+//GET /api/messages
+export const GET = async (request: NextRequest) => {
+  try {
+    await connectDB();
+
+    const session = await getSessionUser();
+
+    if (!session || !session.userId) {
+      return new Response(JSON.stringify({ message: "User ID is required" }), {
+        status: 401,
+      });
+    }
+
+    const messages = await Message.find({ recipient: session.userId })
+      .populate("sender", "username")
+      .populate("property", "name");
+
+    return new Response(JSON.stringify(messages), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response(JSON.stringify({ message: "Something went wrong" }), {
+      status: 500,
+    });
+  }
+};
+
 //POST /api/messages
 export const POST = async (request: NextRequest) => {
   try {
