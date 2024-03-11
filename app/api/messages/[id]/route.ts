@@ -53,3 +53,49 @@ export const PUT = async (request: NextRequest, { params }: any) => {
     });
   }
 };
+
+//DELETE /api/messages/:id
+export const DELETE = async (request: NextRequest, { params }: any) => {
+    try {
+      await connectDB();
+  
+      const { id } = params;
+  
+      const session = await getSessionUser();
+  
+      if (!session || !session.userId) {
+        return new Response(
+          JSON.stringify({ message: "You must be logged in to send a message" }),
+          {
+            status: 401,
+          }
+        );
+      }
+  
+      const message = await Message.findById(id);
+  
+      if (!message) {
+        return new Response(JSON.stringify({ message: "Message not found" }), {
+          status: 404,
+        });
+      }
+  
+      //verify ownership
+      if (message.recipient.toString() !== session.userId) {
+        return new Response(JSON.stringify({ message: "Unauthorized" }), {
+          status: 401,
+        });
+      }
+  
+      await message.deleteOne();
+  
+      return new Response(JSON.stringify({message: "Message deleted"}), {
+        status: 200,
+      });
+    } catch (error) {
+      console.log(error);
+      return new Response(JSON.stringify({ message: "Something went wrong" }), {
+        status: 500,
+      });
+    }
+  };
