@@ -83,7 +83,7 @@ export const POST = async (request: NextRequest) => {
     const imageUploadPromises = [];
 
     for (const image of images) {
-      const imageBuffer = await image.arrayBuffer();
+      const imageBuffer = await new Response(image).arrayBuffer();
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imagaData = Buffer.from(imageArray);
 
