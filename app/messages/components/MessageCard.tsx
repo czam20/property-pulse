@@ -1,4 +1,7 @@
+"use client";
+import React, { useState } from "react";
 import { Message } from "@/types/message-types";
+import { toast } from "react-toastify";
 
 type MessageCardProps = {
   message: Message;
@@ -6,10 +9,34 @@ type MessageCardProps = {
 
 export default function MessageCard(props: MessageCardProps) {
   const { message } = props;
-  const date = new Date(message.createdAt)
+  const date = new Date(message.createdAt);
+  const [isRead, setIsRead] = useState(message.read);
+
+  const handleReadClick = async () => {
+    try {
+      const res = await fetch(`/api/messages/${message._id}`, {
+        method: "PUT",
+      });
+
+      if (res.status === 200) {
+        const { read } = await res.json();
+        setIsRead(read);
+
+        toast.success(read ? "Marked as read" : "Marked as new");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
 
   return (
     <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
+      {!isRead && (
+        <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md">
+          New
+        </div>
+      )}
       <h2 className="text-lg mb-4">
         <span className="font-bold">Property Inquiry: </span>
         {message.property.name}
@@ -40,8 +67,13 @@ export default function MessageCard(props: MessageCardProps) {
           <strong>Received:</strong> {date.toLocaleString()}
         </li>
       </ul>
-      <button className="mt-4 mr-3 bg-blue-500 text-white py-1 px-3 rounded-md">
-        Mark As Read
+      <button
+        onClick={handleReadClick}
+        className={`${
+          isRead ? "bg-gray-500" : "bg-blue-500"
+        } mt-4 mr-3  text-white py-1 px-3 rounded-md`}
+      >
+        {isRead ? "Mark as New" : "Mark as Read"}
       </button>
       <button className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md">
         Delete

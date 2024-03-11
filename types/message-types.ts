@@ -14,4 +14,5 @@ export type Message = {
     _id: string;
   };
   createdAt: string;
+  read: boolean;
 };

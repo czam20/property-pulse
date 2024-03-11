@@ -25,7 +25,7 @@ const MessageSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
     },
-    phonr: {
+    phone: {
       type: String,
     },
     body: {
