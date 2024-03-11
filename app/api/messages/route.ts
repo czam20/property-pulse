@@ -18,9 +18,23 @@ export const GET = async (request: NextRequest) => {
       });
     }
 
-    const messages = await Message.find({ recipient: session.userId })
+    const readMessages = await Message.find({
+      recipient: session.userId,
+      read: true,
+    })
+      .sort({ createdAt: -1 })
       .populate("sender", "username")
       .populate("property", "name");
+
+    const unreadMessages = await Message.find({
+      recipient: session.userId,
+      read: false,
+    })
+      .sort({ createdAt: -1 })
+      .populate("sender", "username")
+      .populate("property", "name");
+
+    const messages = [...unreadMessages, ...readMessages];
 
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
