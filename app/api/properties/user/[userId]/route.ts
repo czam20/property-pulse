@@ -1,9 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "@/config/db";
 import Property from "@/models/Property";
+import { NextRequest } from "next/server";
 
 // api/properties/user/:userId
-export const GET = async (request: NextApiRequest, { params }: any) => {
+export const GET = async (request: NextRequest, { params }: any) => {
   try {
     await connectDB();
 
