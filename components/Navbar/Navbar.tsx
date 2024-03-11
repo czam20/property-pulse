@@ -35,7 +35,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-blue-700 border-b border-blue-500 h-20">
+    <nav className="bg-blue-700 border-b border-blue-500">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -105,7 +105,7 @@ export default function Navbar() {
       {/* Mobile menu, show/hide based on menu state. --> */}
       {openMobileMenu ? (
         <div id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2 bg-black">
+          <div className="space-y-1 px-2 pb-3 pt-2 ">
             <NavItem url="/" label="Home" />
             <NavItem url="/properties" label="Properties" />
             {session ? (
