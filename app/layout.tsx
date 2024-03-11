@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/global.css";
+import 'photoswipe/dist/photoswipe.css'
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
