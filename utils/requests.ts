@@ -1,8 +1,11 @@
 const urlBase = process.env.NEXT_PUBLIC_API_DOMAIN;
 
-export const getProperties = async () => {
+export const getProperties = async (showFeatured = false) => {
   try {
-    const response = await fetch(`${urlBase}/properties`, {cache: "no-store"});
+    const response = await fetch(
+      `${urlBase}/properties${showFeatured ? "/featured" : ""}`,
+      { cache: "no-store" }
+    );
 
     return response.json();
   } catch (error) {

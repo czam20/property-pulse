@@ -8,6 +8,7 @@ import Pagination from "./Pagination";
 type PropertiesProps = {
   pagination?: boolean;
   pageSize?: number;
+  title?: string;
 };
 
 export default function Properties(props: PropertiesProps) {
@@ -47,6 +48,11 @@ export default function Properties(props: PropertiesProps) {
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
+        {props.title && (
+          <h2 className="text-3xl font-bold text-blue-500 text-center mb-4">
+            {props.title}
+          </h2>
+        )}
         {properties.length === 0 ? (
           <p className="text-center text-lg font-bold">
             There's no properties to show

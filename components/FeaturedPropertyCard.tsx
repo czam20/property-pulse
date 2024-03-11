@@ -1,12 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { FaBath, FaBed, FaMoneyBill, FaRulerCombined } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { PropertyCardProps } from "@/types/properties-types";
 import InfoDetail from "./InfoDetail";
+import { FaBath, FaBed, FaMoneyBill, FaRulerCombined } from "react-icons/fa";
+import Image from "next/image";
+import { FaLocationDot } from "react-icons/fa6";
+import Link from "next/link";
 
-export default function PropertyCard(props: PropertyCardProps) {
+export default function FeaturedPropertyCard(props: PropertyCardProps) {
   const getRateDisplay = () => {
     const { rates } = props;
 
@@ -21,27 +20,25 @@ export default function PropertyCard(props: PropertyCardProps) {
     return "";
   };
 
-  const cardImage = props?.images && props?.images?.length > 0 ? props.images[0] : "";
+  const cardImage =
+    props?.images && props?.images?.length > 0 ? props.images[0] : "";
 
   return (
-    <div className="rounded-xl shadow-md relative">
+    <div className="bg-white rounded-xl shadow-md relative flex flex-col md:flex-row">
       <Image
         src={cardImage}
         alt=""
         width={0}
         height={0}
         sizes="100vw"
-        className="w-full h-auto rounded-t-xl"
+        className="object-cover rounded-t-xl md:rounded-tr-none md:rounded-l-xl w-full md:w-2/5"
       />
-      <div className="p-4">
-        <div className="text-left md:text-center lg:text-left mb-6">
-          <div className="text-gray-600">{props.type}</div>
-          <h3 className="text-xl font-bold">{props.name}</h3>
-        </div>
-        <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
+      <div className="p-6 md:flex-1">
+        <h3 className="text-xl font-bold">{props.name}</h3>
+        <div className="text-gray-600 mb-4">{props.type}</div>
+        <h3 className="absolute top-[10px] left-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
           {getRateDisplay()}
         </h3>
-
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
           <InfoDetail
             icon={<FaBed />}
@@ -77,9 +74,9 @@ export default function PropertyCard(props: PropertyCardProps) {
           ) : null}
         </div>
 
-        <div className="border border-gray-100 mb-5"></div>
+        <div className="border border-gray-200 mb-5"></div>
 
-        <div className="flex flex-col lg:flex-row justify-between mb-4">
+        <div className="flex flex-col lg:flex-row justify-between">
           <div className="mb-4 lg:mb-0 text-orange-700">
             <InfoDetail
               icon={<FaLocationDot />}

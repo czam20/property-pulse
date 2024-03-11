@@ -33,5 +33,5 @@ export type PropertyProps = PropertyType & {
 
 export type PropertyCardProps = Omit<
   PropertyProps,
-  "isFeatured" | "seller_info" | "amenities"
+  "seller_info" | "amenities"
 >;
