@@ -6,6 +6,7 @@ import "@/assets/styles/global.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { MessageProvider } from "@/context/MessageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +24,14 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={inter.className}>
-          <Navbar />
-          <main className="min-h-[calc(100vh-144px)]">{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
+        <MessageProvider>
+          <body className={inter.className}>
+            <Navbar />
+            <main className="min-h-[calc(100vh-144px)]">{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </MessageProvider>
       </html>
     </AuthProvider>
   );

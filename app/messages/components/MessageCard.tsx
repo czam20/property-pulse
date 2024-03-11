@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Message } from "@/types/message-types";
 import { toast } from "react-toastify";
+import { useMessageContext } from "@/context/MessageContext";
 
 type MessageCardProps = {
   message: Message;
@@ -12,6 +13,7 @@ export default function MessageCard(props: MessageCardProps) {
   const date = new Date(message.createdAt);
   const [isRead, setIsRead] = useState(message.read);
   const [isDeleted, setIsDeleted] = useState(false);
+  const { setUnreadCount } = useMessageContext();
 
   const handleReadClick = async () => {
     try {
@@ -23,6 +25,7 @@ export default function MessageCard(props: MessageCardProps) {
         const { read } = await res.json();
         setIsRead(read);
 
+        setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
         toast.success(read ? "Marked as read" : "Marked as new");
       }
     } catch (error) {
@@ -40,6 +43,10 @@ export default function MessageCard(props: MessageCardProps) {
       if (res.status === 200) {
         toast.success("Message deleted");
         setIsDeleted(true);
+
+        if (!message.read) {
+          setUnreadCount((prevCount) => prevCount - 1);
+        }
       }
     } catch (error) {
       console.log(error);
