@@ -30,28 +30,28 @@ type FieldsType = {
 export const PropertyAddForm = () => {
   const [mounted, setMounted] = useState(false);
   const [fields, setFields] = useState<FieldsType>({
-    name: "Test property",
-    type: "Apartment",
-    description: "This is a test",
+    name: "",
+    type: "",
+    description: "",
     location: {
       street: "",
-      city: "Test city",
-      state: "Test state",
+      city: "",
+      state: "",
       zipcode: "",
     },
-    beds: "2",
-    baths: "1",
-    square_feet: "1500",
-    amenities: ["Wifi"],
+    beds: "",
+    baths: "",
+    square_feet: "",
+    amenities: [],
     rates: {
-      weekly: "1100",
+      weekly: "",
       monthly: "",
       nightly: "",
     },
     seller_info: {
-      name: "John Doe",
-      email: "john@gmail.com",
-      phone: "617-555-5555",
+      name: "",
+      email: "",
+      phone: "",
     },
     images: [],
   });

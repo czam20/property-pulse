@@ -3,10 +3,10 @@ import InfoBox from "@/components/InfoBox";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
 import { getProperties } from "@/utils/requests";
+import Properties from "@/components/Properties";
 
 export default async function Home() {
-  const properties = await getProperties();
-  const homeProperties = properties?.slice(0, 3);
+  const { properties } = await getProperties();
 
   return (
     <>
@@ -49,12 +49,13 @@ export default async function Home() {
           <h2 className="text-3xl font-bold text-blue-500 mb-6 text-center">
             Recent Properties
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {homeProperties &&
-              homeProperties.map((property: any) => (
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6"> */}
+          <Properties />
+          {/* {properties &&
+              properties.map((property: any) => (
                 <PropertyCard {...property} />
-              ))}
-          </div>
+              ))} */}
+          {/* </div> */}
         </div>
       </section>
     </>
