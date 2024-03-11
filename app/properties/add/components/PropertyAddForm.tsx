@@ -69,7 +69,11 @@ export const PropertyAddForm = () => {
     const { name, value } = e?.currentTarget;
 
     if (name.includes(".")) {
-      const [outerKey, innerKey] = name.split(".");
+      const values = name.split(".");
+
+      const outerKey = values[0] as "location" | "rates" | "seller_info";
+
+      const innerKey = values[1];
 
       setFields((prevFields) => ({
         ...prevFields,
